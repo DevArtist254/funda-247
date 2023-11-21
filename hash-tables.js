@@ -12,7 +12,7 @@
 //Big O(1)
 //Memory - random placement of data (Collision causing linked lists)
 //0(n/k) = O(n)
-//looping through keys
+//looping through keys with no grante order
 
 //Insert - O(1)
 //lookup - O(1)
@@ -59,6 +59,19 @@ class HashTable {
  get(key) {
   let address = this._hash(key)
   return this.data[address]
+ }
+
+ keys() {
+  const keysArr = []
+
+  for (let i = 0; i < this.data.length; i++) {
+   const element = this.data[i]
+   if (this.data[i]) {
+    keysArr.push(this.data[i][0][0])
+   }
+  }
+
+  return keysArr
  }
 }
 
