@@ -111,3 +111,15 @@ console.log(mergeSortArr([0, 3, 4, 31], [4, 6, 30]))
  * Slow deletes
  * Fixed size
  */
+
+/**
+ * Arrays
+ *
+ * Search O(n)
+ * Lookup O(1)
+ * Insert O(n)
+ * Push   O(1)
+ * Delete O(n)
+ *
+ * Ordered
+ */
