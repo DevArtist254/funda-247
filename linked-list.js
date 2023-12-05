@@ -21,6 +21,32 @@ const basket = ["apples", "grapes", "pears"]
 
 // Pointer is a reference that points to the same place in memory giving the user the abilty to delete data
 
+//Linked list
+
+//Advantages
+
+/**
+ * Fast insertion
+ * fast del
+ * Ordered
+ * Flexible Size
+ */
+
+/**
+ * Slow lookup
+ * More memory
+ */
+
+//Visualize
+
+// {
+//  item: "apples" // apples
+//  // 8047 --> grapes
+//  //          8742  --> pears
+//  //                    372  --> null
+//  items: ["apples", "grapes", "peers", null] // is formed to add memory
+// }
+
 //10-->5-->16
 // let myLinkedList = {
 //  head: {
@@ -66,11 +92,66 @@ class myLinkedList {
   this.length++
   return this
  }
+
+ printList() {
+  const array = []
+  let currentNode = this.head
+  while (currentNode !== null) {
+   array.push(currentNode.value)
+   currentNode = currentNode.next
+  }
+  return array
+ }
+
+ //insert(index, value){}
 }
 
 const List = new myLinkedList(10)
 
-List.append(5)
-List.prepend(16)
+List.append(5) //Just added values at the last position
+List.prepend(16) //Just added values at the first position
 
-console.log(List)
+console.log(List.printList())
+
+// Pointer is a reference that points to the same place in memory giving the user the abilty to delete data
+
+//Linked list
+
+//Advantages
+
+/**
+ * Fast insertion
+ * fast del
+ * Ordered
+ * Flexible Size
+ */
+
+/**
+ * Slow lookup
+ * More memory
+ */
+
+//Visualize
+
+// {
+//  item: "apples" // apples
+//  // 8047 --> grapes
+//  //          8742  --> pears
+//  //                    372  --> null
+//  items: ["apples", "grapes", "peers", null] // is formed to add memory
+//  //Head .....................  tail
+// }
+
+//Doubly linked lists - allowing us to tranverse backwards
+
+let y
+
+y = {
+ value: data,
+ next: null,
+ prev: data,
+}
+
+//single list - good for memory, can't transverse backwards
+
+//double list - good operation transversal and searching
