@@ -1,125 +1,73 @@
-class MyArray {
- constructor() {
-  this.length = 0
-  this.data = {}
- }
+//node value of data and pointer
+//head --> data --> tail -->null
 
- get(index) {
-  return this.data[index]
- }
+const basket = ["apples", "graphes", "pears"]
 
- push(item) {
-  this.data[this.length] = item
-  this.length++
-  return this.length
- }
+//ie linked list: apples --> graphes --> pears
 
- pop() {
-  const lastItem = this.data[this.length - 1]
-  delete this.data[this.length - 1]
-  this.length--
-  return lastItem
- }
+/**
+ * apples
+ * 89743 --> graphes
+ *           78688 --> pears
+ *                     372   --> null
+ */
 
- delete(index) {
-  this.data[index]
-  this.shiftItems(index)
- }
+//Pointer is ref to another place in memory
 
- shiftItems(index) {
-  for (let i = index; i < this.length - 1; i++) {
-   this.data[i] = this.data[i + 1]
+const obj1 = {a: true}
+const obj2 = obj1
+obj1.a = "booyta"
+delete obj1
+
+console.log("1", obj1)
+console.log("2", obj2)
+
+// let myLinkedList = {
+//     head: {
+//         value: 10,
+//         next: {
+//             value: 5,
+//             next: {
+//                 value: 16,
+//                 next: null
+//             }
+//         }
+//     }
+// }
+
+class LinkedList {
+ constructor(value) {
+  this.head = {
+   value: value,
+   next: null,
   }
-  delete this.data[this.length - 1]
-  this.length--
+
+  this.tail = this.head
+
+  this.length = 1
+ }
+
+ append(value) {
+  const newNode = {
+   value: value,
+   next: null,
+  }
+
+  //Appends it to our value
+  this.tail.next = newNode
+  console.log(this.tail.next)
+  //Appends it to our ref point or state
+  this.tail = newNode
+  console.log(this.tail)
+  this.length++
+
+  //Storage our value
+  return this
  }
 }
 
-const newArray = new MyArray()
-console.log(newArray.push("k"))
-console.log(newArray.push("e"))
-console.log(newArray.push("v"))
-console.log(newArray.data)
+const myLinkedList = new LinkedList(10)
+myLinkedList.append(5)
+//myLinkedList.append(16)
 
-//Arrays
-// const str = ["a", "b", "c", "d"]
-
-// console.log(str[3])
-
-// str.push("e") // O(1)
-// str.pop() // O(1)
-
-// str.unshift("x") //n
-
-// //Dynamic arrays
-// const strings = [1, 2, 3, 4, 5, 6]
-
-// //New ref is copied [1, 2, 3, 4, 5, 6]
-// // then the new data is added [1, 2, 3, 4, 5, 6, 7];
-
-// strings.push(1)
-// let newArr = [1, 2, 3, 4, 5, 6, 7]
-
-//'Hi My Name is Kevin'
-
-function reverse(str) {
- //Check input
- if (!str || str.length < 2 || typeof str !== "string") return
-
- const backwards = []
-
- const totalItems = str.length - 1
- for (let i = totalItems; i >= 0; i--) {
-  backwards.push(str[i])
-
-  console.log(str[i])
- }
-
- return backwards.join("")
-}
-
-const str = "Hi My Name is Kevin"
-
-console.log(reverse(str))
-
-function mergeSortArr(a, b) {
- const newArr = []
-
- for (let i = 0; i < a.length; i++) {
-  newArr.push(a[i])
- }
-
- for (let i = 0; i < b.length; i++) {
-  newArr.push(b[i])
- }
-
- return newArr.sort((x, y) => x - y)
-}
-
-console.log(mergeSortArr([0, 3, 4, 31], [4, 6, 30]))
-
-//Advantages
-
-/**
- * Fast lookups
- * Fast push/pop at the end
- * Ordered
- */
-
-/**
- * Slow inserts
- * Slow deletes
- * Fixed size
- */
-
-/**
- * Arrays
- *
- * Search O(n)
- * Lookup O(1)
- * Insert O(n)
- * Push   O(1)
- * Delete O(n)
- *
- * Ordered
- */
+console.log(myLinkedList)
